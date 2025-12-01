@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+require_relative 'aoc'
+
+AOC.read(2).each_line do
+end
