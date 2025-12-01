@@ -1,0 +1,13 @@
+GEM
+  specs:
+    openssl (3.3.2)
+
+PLATFORMS
+  arm64-darwin-25
+  ruby
+
+DEPENDENCIES
+  openssl (~> 3.3.2)
+
+BUNDLED WITH
+   2.6.9

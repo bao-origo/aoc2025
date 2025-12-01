@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+require_relative 'aoc'
+
+input = AOC.read(1)
+
+dial = 50
+zero_count = 0
+input.each_line do |line|
+  direction = line[0]
+  count = line[1..].to_i
+
+  case direction
+  when 'L'
+    dial = (dial - count) % 100
+  when 'R'
+    dial = (dial + count) % 100
+  end
+
+  if dial == 0
+    zero_count += 1
+  end
+end
+
+puts zero_count
