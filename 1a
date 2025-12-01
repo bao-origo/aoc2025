@@ -3,9 +3,9 @@ require_relative 'aoc'
 
 dial = 50
 zero_count = 0
-AOC.read(1).each_line do
-  count = it[1..].to_i
-  case it[0]
+AOC.input(day=1).each_line do |line|
+  count = line[1..].to_i
+  case line[0]
   when 'L'
     dial = (dial - count) % 100
   when 'R'

@@ -4,7 +4,7 @@ require 'json'
 require 'dotenv/load'
 
 module AOC
-  def self.read(day)
+  def self.input(day)
     cache = {}
     file_path = 'inputs.json'
     if File.exist?(file_path)

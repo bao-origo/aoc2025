@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+(1..1).each do |day|
+  puts("#{day}a: #{`./#{day}a`}")
+  puts("#{day}b: #{`./#{day}b`}")
+end

@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 require_relative 'aoc'
 
-AOC.read(2).each_line do
+AOC.input(day=2).each_line do |line|
 end

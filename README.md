@@ -12,4 +12,4 @@ then run `bundle`. Write
 AOC_SESSION=<session cookie>
 ```
 
-in `.env`. Run `./1a` .. `./12b` for answer.
+in `.env`. Run `./1a` .. `./12b` for answer, `./solve` to answer all.
