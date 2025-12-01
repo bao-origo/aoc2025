@@ -1,6 +1,6 @@
 # My solutions to Advent of Code 2025
 
-Install [`rbenv`](https://rbenv.org/) for Ruby
+Install [`rbenv`](https://rbenv.org/) for Ruby by running
 
 ```
 curl -fsSL https://rbenv.org/install.sh | bash
