@@ -2,18 +2,18 @@
 require_relative 'aoc'
 
 dial = 50
-zero_count = 0
+count = 0
 AOC.input(day=1).each_line do |line|
-  count = line[1..].to_i
+  spins = line[1..].to_i
   case line[0]
   when 'L'
-    dial = (dial - count) % 100
+    dial = (dial - spins) % 100
   when 'R'
-    dial = (dial + count) % 100
+    dial = (dial + spins) % 100
   end
   if dial == 0
-    zero_count += 1
+    count += 1
   end
 end
 
-puts zero_count
+puts count
