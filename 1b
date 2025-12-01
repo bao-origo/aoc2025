@@ -25,5 +25,4 @@ AOC.input(day=1).each_line do |line|
     end
   end
 end
-
 puts count

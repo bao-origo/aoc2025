@@ -11,9 +11,6 @@ AOC.input(day=1).each_line do |line|
   when 'R'
     dial = (dial + spins) % 100
   end
-  if dial == 0
-    count += 1
-  end
+  count += 1 if dial == 0
 end
-
 puts count
