@@ -23,8 +23,6 @@ AOC.read(1).each_line do
       if dial > 99
         dial = 0
         zero_count += 1
-      elsif dial == 0
-        zero_count += 1
       end
     end
   end
