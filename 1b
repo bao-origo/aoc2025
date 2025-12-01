@@ -4,10 +4,8 @@ require_relative 'aoc'
 dial = 50
 zero_count = 0
 AOC.read(1).each_line do
-  direction = it[0]
   count = it[1..].to_i
-
-  case direction
+  case it[0]
   when 'L'
     count.times do
       dial -= 1
