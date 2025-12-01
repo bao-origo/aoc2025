@@ -1,6 +1,7 @@
 require 'net/http'
 require 'uri'
 require 'json'
+require 'dotenv/load'
 
 module AOC
   def self.read(day)
