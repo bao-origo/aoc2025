@@ -12,7 +12,7 @@ puts (AOC.input(day=2).split(',').reduce(0) do |total, range|
   total + (ids[0].to_i..ids[1].to_i)
     .select { |id| id.ndigits.even? }
     .select { |even_id|
-      half = (even_id.ndigits/2)
+      half = even_id.ndigits/2
       even_id.to_s[...half] == even_id.to_s[half..]
     }
     .sum
