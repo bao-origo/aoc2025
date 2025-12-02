@@ -15,4 +15,4 @@ AOC.input(day=2).split(',').each_with_index do |range, i|
     invalid_ids << even_id if even_id.to_s[...half] == even_id.to_s[half..]
   end
 end
-puts invalid_ids.reduce(0) { |sum, invalid_id| sum += invalid_id }
+puts invalid_ids.reduce(:+)
