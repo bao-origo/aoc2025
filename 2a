@@ -1,11 +1,20 @@
 #!/usr/bin/env ruby
 require_relative 'aoc'
 
+class Numeric
+  def ndigits
+    self.digits.length
+  end
+end
+
 invalid_ids = []
-AOC.input(day=2).split(',').each do |range|
+AOC.input(day=2).split(',').each_with_index do |range, i|
   ids = range.split('-')
-  #(ids[0]..ids[1]).each do |id|
-  #  # TODO: Check if ID contain repeating pattern.
-  #end
+  first_id = ids[0].to_i
+  last_id = ids[1].to_i
+  (first_id..last_id).select {|id| id.ndigits.even?}.each do |even_id|
+    half = (even_id.ndigits/2)
+    invalid_ids << even_id if even_id.to_s[...half] == even_id.to_s[half..]
+  end
 end
 puts invalid_ids.reduce(0) { |sum, invalid_id| sum += invalid_id }
