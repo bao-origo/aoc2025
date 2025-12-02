@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+require_relative 'aoc'
+
+class Numeric
+  def ndigits
+    self.digits.length
+  end
+end
+
+def repeats(number)
+  found_numbers = Set.new
+  max_digits = number.ndigits
+  (1..max_digits).each do |n|
+    pattern = number.to_s[...n]
+    if pattern.length != number.to_s.length and max_digits % pattern.length == 0
+      repeated_number = pattern * (max_digits/pattern.length)
+      found_numbers << repeated_number.to_i if repeated_number == number.to_s
+    end
+  end
+  return found_numbers.to_a
+end
+
+invalid_ids = []
+AOC.input(day=2).split(',').each_with_index do |range, i|
+  ids = range.split('-')
+  (ids[0].to_i..ids[1].to_i).each do |id|
+    invalid_ids += repeats(id)
+  end
+end
+
+puts invalid_ids.reduce(:+)
