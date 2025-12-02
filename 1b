@@ -4,25 +4,13 @@ require_relative 'aoc'
 dial = 50
 count = 0
 AOC.input(day=1).each_line do |line|
-  spins = line[1..].to_i
-  case line[0]
-  when 'L'
-    spins.times do
-      dial -= 1
-      if dial < 0
-        dial = 99
-      elsif dial == 0
-        count += 1
-      end
-    end
-  when 'R'
-    spins.times do
-      dial += 1
-      if dial > 99
-        dial = 0
-        count += 1
-      end
-    end
+  line[1..].to_i.times do
+    dial = if line[0] == 'L'
+             dial == 0 ? 99 : dial - 1
+           else # 'R'
+             dial == 99 ? 0 : dial + 1
+           end
+    count += 1 if dial == 0
   end
 end
 puts count
