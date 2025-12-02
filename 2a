@@ -3,7 +3,7 @@ require_relative 'aoc'
 
 class Numeric
   def ndigits
-    self.digits.length
+    digits.length
   end
 end
 
