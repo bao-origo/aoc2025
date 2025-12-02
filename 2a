@@ -7,12 +7,13 @@ class Numeric
   end
 end
 
-invalid_ids = []
-AOC.input(day=2).split(',').each do |range|
+puts (AOC.input(day=2).split(',').reduce(0) do |total, range|
   ids = range.split('-')
-  (ids[0].to_i..ids[1].to_i).select{|id| id.ndigits.even?}.each do |even_id|
-    half = (even_id.ndigits/2)
-    invalid_ids << even_id if even_id.to_s[...half] == even_id.to_s[half..]
-  end
-end
-puts invalid_ids.reduce(:+)
+  total + (ids[0].to_i..ids[1].to_i)
+    .select { |id| id.ndigits.even? }
+    .select { |even_id|
+      half = (even_id.ndigits/2)
+      even_id.to_s[...half] == even_id.to_s[half..]
+    }
+    .sum
+end)
