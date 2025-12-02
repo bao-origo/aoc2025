@@ -3,24 +3,17 @@ require_relative 'aoc'
 
 class Numeric
   def ndigits
-    self.digits.length
+    digits.length
   end
 end
 
-invalid_ids = []
-AOC.input(day=2).split(',').each do |range|
-  ids = range.split('-')
-  (ids[0].to_i..ids[1].to_i).each do |id|
-    found_numbers = Set.new
+puts (AOC.input(day=2).split(',').reduce([]) do |invalid_ids, range|
+  ids = range.split('-').map(&:to_i)
+  invalid_ids + (ids[0]..ids[1]).select do |id|
     max_digits = id.ndigits
-    (1..max_digits).each do |n|
+    (1..max_digits).any? do |n|
       pattern = id.to_s[...n]
-      if pattern.length != id.to_s.length and max_digits % pattern.length == 0
-        repeated_number = pattern*(max_digits/pattern.length)
-        found_numbers << repeated_number.to_i if repeated_number == id.to_s
-      end
+      pattern.length != id.to_s.length && max_digits % pattern.length == 0 && pattern * (max_digits / pattern.length) == id.to_s
     end
-    invalid_ids += found_numbers.to_a
   end
-end
-puts invalid_ids.reduce(:+)
+end).reduce(:+)
