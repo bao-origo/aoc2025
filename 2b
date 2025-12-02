@@ -11,9 +11,9 @@ puts (AOC.input(day=2).split(',').reduce([]) do |invalid_ids, range|
   ids = range.split('-').map(&:to_i)
   invalid_ids + (ids[0]..ids[1]).select do |id|
     max_digits = id.ndigits
-    (1..max_digits).any? do |n|
+    (1...max_digits).any? do |n|
       pattern = id.to_s[...n]
-      pattern.length != id.to_s.length && max_digits % pattern.length == 0 && pattern * (max_digits / pattern.length) == id.to_s
+      max_digits % pattern.length == 0 && pattern*(max_digits / pattern.length) == id.to_s
     end
   end
 end).reduce(:+)
