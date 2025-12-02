@@ -5,12 +5,7 @@ dial = 50
 count = 0
 AOC.input(day=1).each_line do |line|
   spins = line[1..].to_i
-  case line[0]
-  when 'L'
-    dial = (dial - spins) % 100
-  when 'R'
-    dial = (dial + spins) % 100
-  end
+  dial = (line[0] == 'L' ? dial - spins : dial + spins) % 100
   count += 1 if dial == 0
 end
 puts count
