@@ -2,10 +2,8 @@
 require_relative 'aoc'
 
 dial = 50
-count = 0
-AOC.input(day=1).each_line do |line|
+puts (AOC.input(day=1).each_line.reduce(0) do |count, line|
   spins = line[1..].to_i
   dial = (line[0] == 'L' ? dial - spins : dial + spins) % 100
-  count += 1 if dial == 0
-end
-puts count
+  count + (dial == 0 ? 1 : 0)
+end)
