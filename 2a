@@ -1,5 +1,11 @@
 #!/usr/bin/env ruby
 require_relative 'aoc'
 
-AOC.input(day=2).each_line do |line|
+invalid_ids = []
+AOC.input(day=2).split(',').each do |range|
+  ids = range.split('-')
+  #(ids[0]..ids[1]).each do |id|
+  #  # TODO: Check if ID contain repeating pattern.
+  #end
 end
+puts invalid_ids.reduce(0) { |sum, invalid_id| sum += invalid_id }
