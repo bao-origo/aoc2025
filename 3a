@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+require_relative 'aoc'
+
+input = AOC.input(day=3)
+
+banks = []
+input.each_line do |line|
+  bank = []
+  line.each_char do |c|
+    next if c == "\n"
+    bank << c.to_i
+  end
+  banks << bank
+end
+
+largest_joltages = []
+banks.each do |bank|
+  largest_joltage = "#{bank[0]}#{bank[1]}"
+  i = 0
+  j = 2
+  while i < bank.length
+    while j < bank.length
+      joltage = "#{bank[i]}#{bank[j]}"
+      largest_joltage = joltage if joltage.to_i > largest_joltage.to_i
+      j += 1
+    end
+    i += 1
+    j = i+1
+  end
+  largest_joltages << largest_joltage.to_i
+end
+puts largest_joltages.reduce(:+)
