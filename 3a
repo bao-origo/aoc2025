@@ -1,24 +1,6 @@
 #!/usr/bin/env ruby
 require_relative 'aoc'
 
-input = AOC.input(day=3)
-
-banks = input.each_line.map { |line| line.chomp.chars.map(&:to_i) }
-
-largest_joltages = []
-banks.each do |bank|
-  largest_joltage = "#{bank[0]}#{bank[1]}".to_i
-  i = 0
-  j = 1
-  while i < bank.length
-    while j < bank.length
-      joltage = "#{bank[i]}#{bank[j]}".to_i
-      largest_joltage = joltage if joltage > largest_joltage
-      j += 1
-    end
-    i += 1
-    j = i+1
-  end
-  largest_joltages << largest_joltage
-end
-puts largest_joltages.reduce(:+)
+puts (AOC.input(day=3).each_line.map { |line| line.chomp.chars.map(&:to_i) }.map do |bank|
+  bank.combination(2).map { |a, b| "#{a}#{b}".to_i }.max
+end.sum)
