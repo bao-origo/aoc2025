@@ -3,15 +3,7 @@ require_relative 'aoc'
 
 input = AOC.input(day=3)
 
-banks = []
-input.each_line do |line|
-  bank = []
-  line.each_char do |c|
-    next if c == "\n"
-    bank << c.to_i
-  end
-  banks << bank
-end
+banks = input.each_line.map { |line| line.chomp.chars.map(&:to_i) }
 
 largest_joltages = []
 banks.each do |bank|
