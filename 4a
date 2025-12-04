@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require_relative 'aoc'
+
+puts AOC.input(day=4)
