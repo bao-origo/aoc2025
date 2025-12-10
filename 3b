@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
 require_relative 'aoc'
 
-puts AOC.input(day=3).each_line.map { |line| line.chomp.chars.map(&:to_i) }.map { |bank| bank.combination(12).map { |a,b,c,d,e,f,g,h,i,j,k,l| "#{a}#{b}#{c}#{d}#{e}#{f}#{g}#{h}#{i}#{j}#{k}#{l}".to_i }.max }.sum
+#puts AOC.input(day=3).each_line.map { |line| line.chomp.chars.map(&:to_i) }.map { |bank| bank.combination(12).map { |a,b,c,d,e,f,g,h,i,j,k,l| "#{a}#{b}#{c}#{d}#{e}#{f}#{g}#{h}#{i}#{j}#{k}#{l}".to_i }.max }.sum
+puts AOC.input(day=3)
