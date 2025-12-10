@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+require_relative 'aoc'
+
+input = AOC.input(day=5)
+
+ranges = []
+input.each_line do |line|
+  break if line == "\n"
+  range = line.chomp.split('-')
+  ranges << [range[0].to_i, range[1].to_i]
+end
+
+lowest = ranges[0][0]
+highest = ranges[0][1]
+ranges.each do |range|
+  lowest = range[0] if range[0] < lowest
+  highest = range[1] if highest < range[1]
+end
+
+fresh = 0
+(lowest..highest).each do |id|
+  ranges.each do |range|
+    if id.between?(range[0], range[1])
+      fresh += 1
+      break
+    end
+  end
+end
+puts fresh
