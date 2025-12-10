@@ -1,4 +1,27 @@
 #!/usr/bin/env ruby
 require_relative 'aoc'
 
-puts AOC.input(day=5)
+input = AOC.input(day=5)
+
+ranges = []
+input.each_line do |line|
+  break if line == "\n"
+  range = line.chomp.split('-')
+  ranges << [range[0].to_i, range[1].to_i]
+end
+
+ids = []
+input.split("\n\n")[1].each_line do |line|
+  ids << line.chomp.to_i
+end
+
+fresh = 0
+ids.each do |id|
+  ranges.each do |range|
+    if id.between?(range[0], range[1])
+      fresh += 1
+      break
+    end
+  end
+end
+p fresh
