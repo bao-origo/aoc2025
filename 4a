@@ -1,4 +1,37 @@
 #!/usr/bin/env ruby
 require_relative 'aoc'
 
-puts AOC.input(day=4)
+input = AOC.input(day=4)
+
+grid = []
+input.each_line do |line|
+  row = []
+  line.each_char do |c|
+    case c
+    when '@'
+      row << true
+    when '.'
+      row << false
+    end
+  end
+  grid << row
+end
+
+access = 0
+grid.each_with_index do |row, i|
+  found = 0
+  row.each_with_index do |roll, j|
+    next if !roll
+    found += 1 if 0 <= i-1 && 0 <= j-1 && grid[i-1][j-1] # top left
+    found += 1 if 0 <= i-1 && grid[i-1][j] # top
+    found += 1 if 0 <= i-1 && j+1 < row.length && grid[i-1][j+1] # top right
+    found += 1 if j+1 < row.length && grid[i][j+1] # right
+    found += 1 if i+1 < grid.length && j+1 < row.length && grid[i+1][j+1] # bottom right
+    found += 1 if i+1 < grid.length && grid[i+1][j] # bottom
+    found += 1 if i+1 < grid.length && 0 <= j-1 && grid[i+1][j-1] # bottom left
+    found += 1 if 0 <= j-1 && grid[i][j-1] # left
+    access += 1 if found < 4
+    found = 0
+  end
+end
+puts access
